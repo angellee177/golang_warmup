@@ -1,0 +1,30 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, handling the file you just created
+*.out
+coverage.txt
+
+# Dependency directories (only ignore if you don't want to commit dependencies)
+# Most modern Go projects do NOT use vendor/, but if you do, 
+# it's a choice whether to commit it or not.
+# vendor/
+
+# Environment variables (CRITICAL: Never commit your secrets)
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
