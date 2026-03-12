@@ -10,7 +10,25 @@ import (
 	"github.com/angellee177/go-tasks-crud/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"gorm.io/gorm"
 )
+
+func SetupRouter(db *gorm.DB) *gin.Engine {
+	route := gin.Default()
+
+	// Register Routes
+	routes.SetupRoutes(route, db)
+
+	// Health check
+	route.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message":   "Ping!",
+			"db_status": "connected",
+		})
+	})
+
+	return route
+}
 
 func main() {
 	// load the .env here for PORT variable
@@ -25,27 +43,16 @@ func main() {
 	migrations.RunMigrations(handler)
 	seeds.Run(handler)
 
+	r := SetupRouter(handler)
+
 	// Setup Gin Router
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080" // default port fallback
 	}
 
-	route := gin.Default()
-
-	// Register tasks Route
-	routes.SetupRoutes(route, handler)
-
-	// Test Route
-	route.GET("/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message":   "Ping!",
-			"db_status": "connected",
-		})
-	})
-
 	log.Printf("✅ Database Connection established: %p", handler)
 	log.Printf("🚀 Server is starting on port %s...", port)
 
-	route.Run(":" + port)
+	r.Run(":" + port)
 }
