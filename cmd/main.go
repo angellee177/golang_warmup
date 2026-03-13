@@ -13,6 +13,42 @@ import (
 	"gorm.io/gorm"
 )
 
+type App struct {
+	Router *gin.Engine
+	DB     *gorm.DB
+	Port   string
+}
+
+func Initialize(skipMigrations bool) *App {
+	// load the .env here for PORT variable
+	if err := godotenv.Load(); err != nil {
+		log.Println("⚠️  No .env file found, using system environment variables")
+	}
+
+	// init the DB
+	handler := config.Init()
+
+	// Run migration and seeder
+	if !skipMigrations {
+		migrations.RunMigrations(handler)
+		seeds.Run(handler)
+	}
+
+	// Setup Gin Router
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // default port fallback
+	}
+
+	r := SetupRouter(handler)
+
+	return &App{
+		Router: r,
+		DB:     handler,
+		Port:   port,
+	}
+}
+
 func SetupRouter(db *gorm.DB) *gin.Engine {
 	route := gin.Default()
 
@@ -31,28 +67,10 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 }
 
 func main() {
-	// load the .env here for PORT variable
-	if err := godotenv.Load(); err != nil {
-		log.Println("⚠️  No .env file found, using system environment variables")
-	}
+	app := Initialize(false)
 
-	// init the DB
-	handler := config.Init()
+	log.Printf("✅ Database Connection established")
+	log.Printf("🚀 Server is starting on port")
 
-	// Run migration and seeder
-	migrations.RunMigrations(handler)
-	seeds.Run(handler)
-
-	r := SetupRouter(handler)
-
-	// Setup Gin Router
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080" // default port fallback
-	}
-
-	log.Printf("✅ Database Connection established: %p", handler)
-	log.Printf("🚀 Server is starting on port %s...", port)
-
-	r.Run(":" + port)
+	app.Router.Run(":" + app.Port)
 }
