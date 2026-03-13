@@ -74,10 +74,10 @@ func TestDate_Scan(t *testing.T) {
 		assert.True(t, time.Time(d).Equal(dbTime))
 	})
 
-	// Negative Path: Database returns a string or int (not supported by your Scan)
+	// Negative Path: Database returns a string or int
 	t.Run("Failure - Scan from invalid type", func(t *testing.T) {
 		var d Date
-		err := d.Scan("2026-01-01") // Your Scan logic expects time.Time object
+		err := d.Scan("2026-01-01") // Scan logic expects time.Time object
 
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "failed to scan Date")

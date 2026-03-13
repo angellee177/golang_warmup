@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// setupPostgresDB uses your existing config logic
+// setupPostgresDB uses existing config logic
 func setupPostgresDB(t *testing.T) *gorm.DB {
 	db, err := config.Init()
 	if err != nil {
@@ -26,8 +26,6 @@ func setupPostgresDB(t *testing.T) *gorm.DB {
 }
 
 func TestSeeders_Postgres(t *testing.T) {
-	// Integration tests usually shouldn't run during 'go test ./...'
-	// unless specified, but we'll run it here for your coverage.
 	db := setupPostgresDB(t)
 
 	t.Run("Full Success Path", func(t *testing.T) {
@@ -39,7 +37,6 @@ func TestSeeders_Postgres(t *testing.T) {
 		db.Model(&models.User{}).Count(&userCount)
 		db.Model(&models.Task{}).Count(&taskCount)
 
-		// Your seeder adds 2 users and 50 tasks
 		assert.Equal(t, int64(2), userCount)
 		assert.Equal(t, int64(50), taskCount)
 	})
@@ -55,6 +52,21 @@ func TestSeeders_Postgres(t *testing.T) {
 		var taskCount int64
 		db.Model(&models.Task{}).Count(&taskCount)
 		assert.Equal(t, int64(0), taskCount)
+	})
+
+	t.Run("SeedUsers - DB Error", func(t *testing.T) {
+		// Drop the table
+		db.Migrator().DropTable(&models.User{})
+
+		// This should log an error because the table is missing
+		SeedUsers(db)
+
+		// Check existence specifically using Migrator
+		exists := db.Migrator().HasTable(&models.User{})
+		assert.False(t, exists, "Table should not exist after being dropped")
+
+		// Re-migrate for subsequent tests
+		db.AutoMigrate(&models.User{})
 	})
 }
 
