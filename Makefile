@@ -19,3 +19,7 @@ tidy:
 # Clean up coverage files
 clean:
 	rm coverage.out
+
+# only run integration testing
+test-integration:
+	go test -v ./repository/... -run TestTaskRepository_Integration
