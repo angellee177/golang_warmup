@@ -29,7 +29,7 @@ func SeedTask(db *gorm.DB) {
 	tasks := make([]models.Task, count)
 
 	for i := 0; i < count; i++ {
-		targetUser := users[i%2]
+		targetUser := users[i%len(users)]
 
 		// Assign the fake tasks into task at index.
 		tasks[i] = models.Task{
