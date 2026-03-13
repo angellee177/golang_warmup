@@ -3,6 +3,8 @@ package service
 import (
 	"context"
 	"errors"
+	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -29,7 +31,15 @@ func NewUserService(repo repository.IGenericRepository[models.User]) IUserServic
 }
 
 func (s *userService) Register(ctx context.Context, user *models.User) error {
-	hashed, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if user.Password == "" {
+		return errors.New("password cannot be empty")
+	}
+
+	hashed, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err != nil {
+		return fmt.Errorf("failed to hash password: %w", err)
+	}
+
 	user.Password = string(hashed)
 	return s.repo.Create(ctx, user)
 }
@@ -37,11 +47,16 @@ func (s *userService) Register(ctx context.Context, user *models.User) error {
 func (s *userService) Login(ctx context.Context, email, password string) (string, error) {
 	// Specialized lookup using Type Assertion (Same as Task)
 	user, err := s.repo.(repository.IUserRepository).FindByEmail(ctx, email)
+	log.Println("user email:", user.Email)
+	log.Printf("📦 Raw Input Password: [%s]", password)
+	log.Printf("🗄️  Stored Hash in DB: [%s]", user.Password)
+
 	if err != nil {
 		return "", errors.New("invalid credentials")
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		log.Printf("🚫 Bcrypt Mismatch: %v", err)
 		return "", errors.New("invalid credentials")
 	}
 

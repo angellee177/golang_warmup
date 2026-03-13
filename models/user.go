@@ -10,7 +10,7 @@ import (
 type User struct {
 	ID        uuid.UUID      `gorm:"type:uuid;primaryKey;default:gen_random_uuid()" json:"id"`
 	Email     string         `gorm:"uniqueIndex;not null" json:"email"`
-	Password  string         `gorm:"not null" json:"-"` // Hidden from JSON
+	Password  string         `gorm:"not null" json:"password"` // for debugging purpose
 	Name      string         `json:"name"`
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`

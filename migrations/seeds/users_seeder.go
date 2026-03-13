@@ -17,7 +17,6 @@ func SeedUsers(db *gorm.DB) {
 	// Prepare a common hashed password for all seed users
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte("1234"), bcrypt.DefaultCost)
 
-	count := 10
 	users := []models.User{
 		{
 			Name:     "user1",
@@ -36,5 +35,5 @@ func SeedUsers(db *gorm.DB) {
 		return
 	}
 
-	log.Printf("✅ Seeding success: %d users added.", count)
+	log.Printf("✅ Seeding success: %d users added.", len(users))
 }
