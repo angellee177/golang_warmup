@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"time"
 
@@ -47,16 +46,12 @@ func (s *userService) Register(ctx context.Context, user *models.User) error {
 func (s *userService) Login(ctx context.Context, email, password string) (string, error) {
 	// Specialized lookup using Type Assertion (Same as Task)
 	user, err := s.repo.(repository.IUserRepository).FindByEmail(ctx, email)
-	log.Println("user email:", user.Email)
-	log.Printf("📦 Raw Input Password: [%s]", password)
-	log.Printf("🗄️  Stored Hash in DB: [%s]", user.Password)
 
 	if err != nil {
 		return "", errors.New("invalid credentials")
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		log.Printf("🚫 Bcrypt Mismatch: %v", err)
 		return "", errors.New("invalid credentials")
 	}
 
