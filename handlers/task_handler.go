@@ -146,6 +146,7 @@ func (h *TaskHandler) DeleteTask(ctx *gin.Context) {
 
 	if err := h.service.DeleteTask(ctx, id, userID); err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{"message": "Task Deleted successfully"})
