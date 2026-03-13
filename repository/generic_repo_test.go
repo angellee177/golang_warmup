@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"fmt"
 	"testing"
 	"time"
 
@@ -71,12 +72,12 @@ func TestGenericRepository_Implementation(t *testing.T) {
 	t.Run("FindAll with Pagination", func(t *testing.T) {
 		// Insert a few items
 		for i := 0; i < 5; i++ {
-			repo.Create(ctx, &TestEntity{ID: uuid.New(), Name: string(rune(i))})
+			repo.Create(ctx, &TestEntity{ID: uuid.New(), Name: fmt.Sprintf("Item %d", i)})
 		}
 
 		entities, total, err := repo.FindAll(ctx, 2, 0)
 		assert.NoError(t, err)
-		assert.Equal(t, int64(5), total) // 1 from prev test + 5 here
+		assert.Equal(t, int64(6), total) // 1 from prev test + 5 here
 		assert.Len(t, entities, 2)       // Limit was 2
 	})
 
