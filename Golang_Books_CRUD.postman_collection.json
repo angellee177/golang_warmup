@@ -1,0 +1,1171 @@
+{
+  "info": {
+    "_postman_id": "44673454-edb0-4f1b-a2e9-6054c674c54b",
+    "name": "Golang_Books_CRUD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8954484"
+  },
+  "item": [
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDc5NDgsInN1YiI6ImEwMWY2YzYwLWM1MTktNDc0MS04MGZmLTNiZjYxYjkwMDBkYiJ9.ix0st2a9Kgwt_H_o4zRCpjYKEIcHKCGg05OQEwnQhKw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/v1/tasks?page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks?page=1&limit=5&search=Rowland",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "search",
+                      "value": "Rowland"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 12 Mar 2026 23:53:18 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "41"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Authorization header required\"\n}"
+            },
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:25:59 GMT"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n            \"title\": \"Lean whose we.\",\n            \"description\": \"Occasionally those school wild other. Most play basket why rain.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"32e1f606-b727-46f9-a20a-af9cfcb37d80\",\n            \"title\": \"Murder can limp.\",\n            \"description\": \"Has daily Diabolical do me. Eventually world has therefore bouquet.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"d6e9743b-b6ed-4fe5-a600-1e15b5cdb742\",\n            \"title\": \"Rarely why these.\",\n            \"description\": \"Burkinese slowly annually openly its. Float eventually party where regularly.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"db75651b-5aa5-4303-b02a-afe78c2348a5\",\n            \"title\": \"Where smile themselves.\",\n            \"description\": \"Sedge several mob eek all. Frighten how whereas even nobody.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"4c9e6384-2348-48c2-a124-cddde9fb6dda\",\n            \"title\": \"Point certain whoever.\",\n            \"description\": \"These whichever slavery always contrary. Of hey ouch everybody sedge.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"e633971f-a2ca-458a-bb4c-698bc4078828\",\n            \"title\": \"Already instance often.\",\n            \"description\": \"Very Roman neither waiter unless. Yourselves did Caesarian line your.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"b540622f-f145-4ea5-9fde-85f81d54fc64\",\n            \"title\": \"In cluster outside.\",\n            \"description\": \"Significant either summation arrogant bless. Float her little other freedom.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"a39843a9-2f6f-4c1a-a856-1a19fdba8bb4\",\n            \"title\": \"Justice there tender.\",\n            \"description\": \"Due since dive fly skip. Warn piano out music my.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"54d7a582-1c1b-4613-bd08-a0b773e6bd3d\",\n            \"title\": \"Infrequently plenty catalog.\",\n            \"description\": \"Secondly his hers whose scarcely. These of closely yearly really.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"33a8618c-67d8-42ef-a8f0-e4517dfa7a5c\",\n            \"title\": \"Harvest dazzle far.\",\n            \"description\": \"To forgive but beautifully comfortable. These hungrily his me very.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        }\n    ],\n    \"limit\": 10,\n    \"page\": 1,\n    \"total_pages\": 3,\n    \"total_results\": 25\n}"
+            },
+            {
+              "name": "pagination",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks?page=1&limit=5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:26:20 GMT"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n            \"title\": \"Lean whose we.\",\n            \"description\": \"Occasionally those school wild other. Most play basket why rain.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"32e1f606-b727-46f9-a20a-af9cfcb37d80\",\n            \"title\": \"Murder can limp.\",\n            \"description\": \"Has daily Diabolical do me. Eventually world has therefore bouquet.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"d6e9743b-b6ed-4fe5-a600-1e15b5cdb742\",\n            \"title\": \"Rarely why these.\",\n            \"description\": \"Burkinese slowly annually openly its. Float eventually party where regularly.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"db75651b-5aa5-4303-b02a-afe78c2348a5\",\n            \"title\": \"Where smile themselves.\",\n            \"description\": \"Sedge several mob eek all. Frighten how whereas even nobody.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"33a8618c-67d8-42ef-a8f0-e4517dfa7a5c\",\n            \"title\": \"Harvest dazzle far.\",\n            \"description\": \"To forgive but beautifully comfortable. These hungrily his me very.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        }\n    ],\n    \"limit\": 5,\n    \"page\": 1,\n    \"total_pages\": 5,\n    \"total_results\": 25\n}"
+            },
+            {
+              "name": "search",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks?page=1&limit=5&search=whose",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "search",
+                      "value": "whose"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:27:08 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1286"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n            \"title\": \"Lean whose we.\",\n            \"description\": \"Occasionally those school wild other. Most play basket why rain.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        },\n        {\n            \"id\": \"54d7a582-1c1b-4613-bd08-a0b773e6bd3d\",\n            \"title\": \"Infrequently plenty catalog.\",\n            \"description\": \"Secondly his hers whose scarcely. These of closely yearly really.\",\n            \"status\": \"todo\",\n            \"due_date\": \"2026-03-20\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n        }\n    ],\n    \"limit\": 5,\n    \"page\": 1,\n    \"total_pages\": 1,\n    \"total_results\": 2\n}"
+            },
+            {
+              "name": "search by status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks?page=1&limit=5&status=done",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "status",
+                      "value": "done"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:33:11 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "606"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n            \"title\": \"task1\",\n            \"description\": \"task example\",\n            \"status\": \"done\",\n            \"due_date\": \"2026-12-04\",\n            \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"creator\": {\n                \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n                \"email\": \"user1@example.com\",\n                \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n                \"name\": \"user1\",\n                \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n                \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n            },\n            \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n            \"updated_at\": \"2026-03-13T08:31:13.248549+08:00\"\n        }\n    ],\n    \"limit\": 5,\n    \"page\": 1,\n    \"total_pages\": 1,\n    \"total_results\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDgxMTIsInN1YiI6ImEwMWY2YzYwLWM1MTktNDc0MS04MGZmLTNiZjYxYjkwMDBkYiJ9.CQ1xDMOGmNybh7uxGMgkhvYaSoHcKqFg53iK-cwacR4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/v1/tasks/db75651b-5aa5-4303-b02a-afe78c2348a5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "tasks",
+                "db75651b-5aa5-4303-b02a-afe78c2348a5"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks/82497904-aa9b-4d0a-9897-8baaf2229a41",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks",
+                    "82497904-aa9b-4d0a-9897-8baaf2229a41"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:29:09 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "603"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n    \"title\": \"Lean whose we.\",\n    \"description\": \"Occasionally those school wild other. Most play basket why rain.\",\n    \"status\": \"todo\",\n    \"due_date\": \"2026-03-20\",\n    \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n    \"creator\": {\n        \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n        \"email\": \"user1@example.com\",\n        \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n        \"name\": \"user1\",\n        \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n        \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n    },\n    \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n    \"updated_at\": \"2026-03-13T08:15:44.926355+08:00\"\n}"
+            },
+            {
+              "name": "not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks/db75651b-5aa5-4303-b02a-afe78c2348a5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks",
+                    "db75651b-5aa5-4303-b02a-afe78c2348a5"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:35:29 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "26"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Task not found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDgxMTIsInN1YiI6ImEwMWY2YzYwLWM1MTktNDc0MS04MGZmLTNiZjYxYjkwMDBkYiJ9.CQ1xDMOGmNybh7uxGMgkhvYaSoHcKqFg53iK-cwacR4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\":\"task1\",\n    \"description\":\"task example\",\n    \"status\": \"todo\",\n    \"due_date\" :\"2026-12-04\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/tasks/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "tasks",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"task1\",\n    \"description\":\"task example\",\n    \"status\": \"todo\",\n    \"due_date\" :\"2026-12-04\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:29:46 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "273"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"5500881e-94b1-4155-a00e-7019a5c3e302\",\n    \"title\": \"task1\",\n    \"description\": \"task example\",\n    \"status\": \"todo\",\n    \"due_date\": \"2026-12-04\",\n    \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n    \"created_at\": \"2026-03-13T08:29:46.49139+08:00\",\n    \"updated_at\": \"2026-03-13T08:29:46.49139+08:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDgxMTIsInN1YiI6ImEwMWY2YzYwLWM1MTktNDc0MS04MGZmLTNiZjYxYjkwMDBkYiJ9.CQ1xDMOGmNybh7uxGMgkhvYaSoHcKqFg53iK-cwacR4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\":\"task1\",\n    \"description\":\"task example\",\n    \"status\": \"done\",\n    \"due_date\" :\"2026-12-04\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/tasks/82497904-aa9b-4d0a-9897-8baaf2229a41",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "tasks",
+                "82497904-aa9b-4d0a-9897-8baaf2229a41"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"task1\",\n    \"description\":\"task example\",\n    \"status\": \"done\",\n    \"due_date\" :\"2026-12-04\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks/82497904-aa9b-4d0a-9897-8baaf2229a41",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks",
+                    "82497904-aa9b-4d0a-9897-8baaf2229a41"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:31:13 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "542"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"82497904-aa9b-4d0a-9897-8baaf2229a41\",\n    \"title\": \"task1\",\n    \"description\": \"task example\",\n    \"status\": \"done\",\n    \"due_date\": \"2026-12-04\",\n    \"user_id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n    \"creator\": {\n        \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n        \"email\": \"user1@example.com\",\n        \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n        \"name\": \"user1\",\n        \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n        \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n    },\n    \"created_at\": \"2026-03-13T08:15:44.926355+08:00\",\n    \"updated_at\": \"2026-03-13T08:31:13.248549+08:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDgxMTIsInN1YiI6ImEwMWY2YzYwLWM1MTktNDc0MS04MGZmLTNiZjYxYjkwMDBkYiJ9.CQ1xDMOGmNybh7uxGMgkhvYaSoHcKqFg53iK-cwacR4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/tasks/db75651b-5aa5-4303-b02a-afe78c2348a5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "tasks",
+                "db75651b-5aa5-4303-b02a-afe78c2348a5"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/tasks/db75651b-5aa5-4303-b02a-afe78c2348a5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "tasks",
+                    "db75651b-5aa5-4303-b02a-afe78c2348a5"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:34:45 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "39"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Task Deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\",\n    \"name\": \"angelTest\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\",\n    \"name\": \"angelTest\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/users/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "users",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 12 Mar 2026 23:56:47 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "185"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"e923fad3-8d87-4861-a311-3d66a11f8552\",\n    \"email\": \"angel@test.com\",\n    \"name\": \"angelTest\",\n    \"created_at\": \"2026-03-13T07:56:47.649208+08:00\",\n    \"updated_at\": \"2026-03-13T07:56:47.649208+08:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"user1@example.com\",\n    \"password\":\"1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success_token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/users/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "users",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:16:58 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "177"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDc0MTgsInN1YiI6IjZlMDY3MzgyLWY3OTYtNGJhNy1iODg2LTJlYzlkYjNhZmZhYyJ9.2BTbQN3-T6wdXyD5QLR7A8N9iztmgBOqXLCM2L_JJWY\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "my-profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDc1NTMsInN1YiI6IjZlMDY3MzgyLWY3OTYtNGJhNy1iODg2LTJlYzlkYjNhZmZhYyJ9.5QZsR5byW146VUjLbJaApXFcj-wo0x6k9pG_z49VQPw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/users/my-profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "users",
+                "my-profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/users/my-profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "users",
+                    "my-profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:21:29 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "259"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"6e067382-f796-4ba7-b886-2ec9db3affac\",\n    \"email\": \"angel@test.com\",\n    \"password\": \"$2a$10$7QH6CSLolHW9fBtmAtT5E.nwtlPhPJYrE.IHnFj9hq7xjNWz/kdQC\",\n    \"name\": \"angelTest\",\n    \"created_at\": \"2026-03-13T08:16:24.814378+08:00\",\n    \"updated_at\": \"2026-03-13T08:16:24.814378+08:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDc1NTMsInN1YiI6IjZlMDY3MzgyLWY3OTYtNGJhNy1iODg2LTJlYzlkYjNhZmZhYyJ9.5QZsR5byW146VUjLbJaApXFcj-wo0x6k9pG_z49VQPw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/users/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "users",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"angel@test.com\",\n    \"password\":\"password123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/users/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "users",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:22:21 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "794"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"6e067382-f796-4ba7-b886-2ec9db3affac\",\n            \"email\": \"angel@test.com\",\n            \"password\": \"$2a$10$7QH6CSLolHW9fBtmAtT5E.nwtlPhPJYrE.IHnFj9hq7xjNWz/kdQC\",\n            \"name\": \"angelTest\",\n            \"created_at\": \"2026-03-13T08:16:24.814378+08:00\",\n            \"updated_at\": \"2026-03-13T08:16:24.814378+08:00\"\n        },\n        {\n            \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n            \"email\": \"user1@example.com\",\n            \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n            \"name\": \"user1\",\n            \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n        },\n        {\n            \"id\": \"411c104c-071a-46f8-85a8-5260d208f43b\",\n            \"email\": \"user2@example.com\",\n            \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n            \"name\": \"user2\",\n            \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n            \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n        }\n    ],\n    \"total\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "user detail",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzM0NDc1NTMsInN1YiI6IjZlMDY3MzgyLWY3OTYtNGJhNy1iODg2LTJlYzlkYjNhZmZhYyJ9.5QZsR5byW146VUjLbJaApXFcj-wo0x6k9pG_z49VQPw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/users/a01f6c60-c519-4741-80ff-3bf61b9000db",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "users",
+                "a01f6c60-c519-4741-80ff-3bf61b9000db"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/v1/users/a01f6c60-c519-4741-80ff-3bf61b9000db",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "v1",
+                    "users",
+                    "a01f6c60-c519-4741-80ff-3bf61b9000db"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 13 Mar 2026 00:23:11 GMT"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "256"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"a01f6c60-c519-4741-80ff-3bf61b9000db\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"$2a$10$RybHj9ePRVi8PNqCd4jYEufLzQRykYXb.Vzz/O/fQYWiw9WQeJCZa\",\n    \"name\": \"user1\",\n    \"created_at\": \"2026-03-13T08:15:44.92291+08:00\",\n    \"updated_at\": \"2026-03-13T08:15:44.92291+08:00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 09 Mar 2026 03:54:28 GMT"
+            },
+            {
+              "key": "Content-Length",
+              "value": "43"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"db_status\": \"connected\",\n    \"message\": \"Ping!\"\n}"
+        }
+      ]
+    }
+  ]
+}
