@@ -26,7 +26,10 @@ func Initialize(skipMigrations bool) *App {
 	}
 
 	// init the DB
-	handler := config.Init()
+	handler, err := config.Init()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Run migration and seeder
 	if !skipMigrations {
@@ -66,11 +69,15 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	return route
 }
 
+var runServer = func(app *App) {
+	app.Router.Run(":" + app.Port)
+}
+
 func main() {
 	app := Initialize(false)
 
 	log.Printf("✅ Database Connection established")
-	log.Printf("🚀 Server is starting on port")
+	log.Printf("🚀 Server is starting on port %s", app.Port)
 
-	app.Router.Run(":" + app.Port)
+	runServer(app)
 }
