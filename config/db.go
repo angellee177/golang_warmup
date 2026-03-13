@@ -12,7 +12,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func Init() *gorm.DB {
+func Init() (*gorm.DB, error) {
 	// Replicate __dirname logic
 	// runtime.Caller(0) returns the path of This file
 	_, b, _, _ := runtime.Caller(0)
@@ -50,10 +50,11 @@ func Init() *gorm.DB {
 
 	if err != nil {
 		log.Fatalf("Failed to connect to Databse: %v", err)
+		return nil, err
 	}
 
 	// Logger to let us know the DB is connected
 	log.Printf("Successfully connected to the Database: %s", dbname)
 
-	return database
+	return database, nil
 }
