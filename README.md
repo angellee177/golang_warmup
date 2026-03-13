@@ -3,7 +3,7 @@
 A simple CRUD with JWT Auth using Golang, Gin and Gorm.
 
 ## System Design
-Please check [here](./docs/system-design.MD) to see more detail about the APIs system design
+Please check [here](./docs/system-design.md) to see more detail about the APIs system design
 
 ## Project Setup
 ### 1. Prerequisites
