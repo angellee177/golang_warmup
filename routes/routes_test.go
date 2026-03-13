@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"os/exec"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -54,4 +55,30 @@ func TestSetupRoutes(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusNotFound, w.Code)
+}
+
+func TestUserRoutes_PanicsOnMissingSecret(t *testing.T) {
+	// check if an environment variable is set to avoid infinite recursion
+	if os.Getenv("BE_CRASHER") == "1" {
+		os.Unsetenv("JWT_SECRET") // Ensure it's empty
+
+		router := gin.New()
+		v1 := router.Group("/v1")
+
+		// This should trigger log.Fatal
+		UserRoutes(v1, nil)
+		return
+	}
+
+	// Run the test in a subprocess
+	cmd := exec.Command(os.Args[0], "-test.run=TestUserRoutes_PanicsOnMissingSecret")
+	cmd.Env = append(os.Environ(), "BE_CRASHER=1")
+
+	err := cmd.Run()
+
+	// Assert that the process exited with an error (log.Fatal causes exit status 1)
+	if e, ok := err.(*exec.ExitError); ok && !e.Success() {
+		return // Successfully triggered the Fatal branch!
+	}
+	t.Fatalf("process ran with err %v, want exit status 1", err)
 }
